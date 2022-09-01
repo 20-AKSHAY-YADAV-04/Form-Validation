@@ -25,6 +25,21 @@ function formValidationFields()
   qualificationValidation();
   hobbiesValidation();
   commentBoxValidation();
+
+  if(firstNameValidation()==true && 
+    lastNameValidation()==true && 
+    emailAddressValidation() == true && 
+    mobileNumberValidation()==true && 
+    qualificationValidation()==true && 
+    hobbiesValidation()==true && 
+    commentBoxValidation()==true )
+  {
+    return true;
+  }
+  else
+  {
+    return false;
+  }
 }
 
 function firstNameValidation()
