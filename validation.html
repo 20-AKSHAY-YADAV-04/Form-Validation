@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Form Validation</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+        integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="validation.css">
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <script src="bootstrap.bundle.min.js"></script>
+
+</head>
+
+<body>
+    <div class="container p-0 mt-4">
+        <div class="row p-3 formContent">
+            <h2 class="text-center">JavaScript Form Validation Task</h2>
+            <form class="mt-3 form" id="form" name="isForm" method="post">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="mb-3 form-control">
+                            <label for="FirstName" class="form-label">First Name<span class="fieldRequired">
+                                    *</span></label>
+                            <small id="firstNameError"></small>
+                            <input autocomplete="off" type="text" autofocus class="form-control" id="FirstName"
+                                    placeholder="Enter the First Name Here...">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="mb-3 form-control">
+                            <label for="LastName" class="form-label">Last Name<span class="fieldRequired">
+                                    *</span></label>
+                            <small id="lastNameError"></small>
+                            <input autocomplete="off" type="text" class="form-control" id="LastName"
+                                placeholder="Enter the Last Name Here...">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="mb-3 form-control">
+                            <label for="EmailAddress" class="form-label">Email Address<span class="fieldRequired">
+                                    *</span></label>
+                            <small id="emailAddressError"></small>
+                            <input autocomplete="off" type="email" class="form-control" id="EmailAddress"
+                                aria-describedby="emailHelp" placeholder="youremailaddress@gmail.com">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="mb-3 form-control">
+                            <label for="MobileNumber" class="form-label">Mobile or Phone Number<span
+                                    class="fieldRequired"> *</span></label>
+                            <small id="mobileNumberError"></small>
+                            <input autocomplete="off" type="number" class="form-control" id="MobileNumber"
+                                placeholder="Enter the Mobile or Phone Number Here...">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <div class="mb-3 form-control">
+                            <label for="Qualification" class="form-label">Qualifications<span class="fieldRequired">
+                                    *</span></label>
+                            <small id="qualificationError"></small>
+                            <!-- Example split danger button -->
+                            <select class="form-select btn-sm" aria-label="Default select example" id="Qualification">
+                                <option selected>Select Qualification</option>
+                                <option value="1">M. C. A.</option>
+                                <option value="2">Master of Arts</option>
+                                <option value="3">Master of Science</option>
+                                <option value="4">Master of Research</option>
+                                <option value="5">Master of Studies</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="mb-3 form-control">
+                            <label for="textGender" class="form-label">Select Gender<span class="fieldRequired">
+                                    *</span></label>
+                            <!-- <input type="text" class="form-control" id="textGender" placeholder="Enter the Qualification Here..."> -->
+                            <div id="selectGender" class="d-flex justify-content-start gap-2 align-items-center">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="selectGender" id="textGMale"
+                                        checked>
+                                    <label class="form-check-label" for="textGMale">
+                                        Male
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="selectGender" id="textGFemale">
+                                    <label class="form-check-label" for="textGFemale">
+                                        Female
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="mb-3 form-control">
+                            <label for="checkHobbies" class="form-label">Select Hobbies<span class="fieldRequired">
+                                    *</span></label>
+                            <small id="hobbiesError"></small>
+                            <!-- <input type="text" class="form-control" id="textHobbies" placeholder="Enter the Qualification Here..."> -->
+                            <div id="checkHobbies" class="d-flex justify-content-start gap-4 align-items-center">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="textHobbies1" name="checkHobbies">
+                                    <label class="form-check-label" for="textHobbies1">
+                                        Cricket
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="textHobbies2" name="checkHobbies">
+                                    <label class="form-check-label" for="textHobbies2">
+                                        Reading
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="textHobbies3" name="checkHobbies">
+                                    <label class="form-check-label" for="textHobbies3">
+                                        Music
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="textHobbies4" name="checkHobbies">
+                                    <label class="form-check-label" for="textHobbies4">
+                                        Swimming
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3 form-control">
+                    <label for="CommentBox" class="form-label">Comment<span class="fieldRequired"> *</span></label>
+                    <small id="commentError"></small>
+                    <textarea autocomplete="off" type="text" class="form-control" id="CommentBox"
+                        placeholder="Enter the Comment Here..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" id="btnSubmit">Submit
+                    Data or Save Data</button>
+            </form>
+        </div>
+        <div class="row p-3 mt-3 mb-3 formContent">
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr class="text-center rounded-3">
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email Address</th>
+                        <th>Qualification</th>
+                        <th>Gender</th>
+                        <th>Hobbies</th>
+                        <th>Comments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="text-center rounded-3">
+                        <th>Akshay</th>
+                        <td>Yadav</td>
+                        <td>Akshay@gmail.com</td>
+                        <td>MCS</td>
+                        <td>Male</td>
+                        <td>Playing Cricket</td>
+                        <td>Akshay</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="validation.js"></script>
+</body>
+</html>
