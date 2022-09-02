@@ -3,12 +3,11 @@ let FirstName = document.getElementById("FirstName");
 let LastName = document.getElementById("LastName");
 let EmailAddress = document.getElementById("EmailAddress");
 var MobileNumber= document.getElementById("MobileNumber");
-var MobileNumber= document.getElementById("MobileNumber");
 var Qualification= document.getElementById("Qualification");
 var checkHobbies= document.getElementsByName("checkHobbies");
 var CommentBox= document.getElementById("CommentBox");
-let btnSubmit = document.getElementById("btnSubmit");
-
+let checkboxes = document.getElementsByName("Hobbies");
+let Gender = document.querySelector("input[name = gender]:checked");
 
 document.querySelector("#form").addEventListener("submit", (event) => {
   event.preventDefault();
@@ -34,14 +33,16 @@ function formValidationFields()
     hobbiesValidation()==true && 
     commentBoxValidation()==true )
   {
+    tableDataShow();
     return true;
   }
   else
   {
     return false;
   }
-}
+};
 
+// First Name Validation Function
 function firstNameValidation()
 {
   firstNameValue = FirstName.value.trim();
@@ -59,8 +60,9 @@ function firstNameValidation()
     document.getElementById("firstNameError").innerText = "";
     return true;
   }
-}
+};
 
+// Last Name Validation Function
 function lastNameValidation()
 {
   lastNameValue = LastName.value.trim();
@@ -78,7 +80,9 @@ function lastNameValidation()
     document.getElementById("lastNameError").innerText = "";
     return true;
   }
-}
+};
+
+// Email Address Validation Function
 function emailAddressValidation()
 {
   emailValue = EmailAddress.value.trim();
@@ -96,9 +100,9 @@ function emailAddressValidation()
     document.getElementById("emailAddressError").innerText = "";
     return true;
   }
+};
 
-}
-
+// Mobile Number Validation Function
 function mobileNumberValidation()
 {
   mobileNumberValue = MobileNumber.value.trim();
@@ -115,8 +119,9 @@ function mobileNumberValidation()
     document.getElementById("mobileNumberError").innerText = "";
     return true;
   }
-}
+};
 
+// Qualification Validation Function
 function qualificationValidation()
 {
   QualificationValue = Qualification.value.trim();
@@ -129,21 +134,32 @@ function qualificationValidation()
     document.getElementById("qualificationError").innerText="";
     return true
   }
-}
+};
 
+// Hobbies Validation Function
 function hobbiesValidation()
 {
-  if (checkHobbies == null) 
-  {
-    document.getElementById("hobbiesError").innerText  = "Please Choose Minimum One or More Hobbies";
+  var checked = 0;
+  var chkHobbies = document.getElementById("checkHobbies");
+  var chks = chkHobbies.getElementsByTagName("input");
+  for (var i = 0; i < chks.length; i++) {
+    if (chks[i].checked)
+    {
+      checked++;
+    }
   }
-  else
+  if (checked == "")
   {
-    document.getElementById("hobbiesError").innerText="";
-    return true
+    document.getElementById("hobbiesError").innerText = "Please Select Atleast One or Two hobbiesError";
   }
-}
+  else 
+  {
+    document.getElementById("hobbiesError").innerText = "";
+    return true;
+  }
+};
 
+// CommentBox Validation Function
 function commentBoxValidation()
 {
   CommentBoxValue = CommentBox.value.trim();
@@ -156,4 +172,28 @@ function commentBoxValidation()
     document.getElementById("commentError").innerText="";
     return true
   }
-}
+};
+
+// Show Data Function
+tableDataShow = () => {
+  let chk = [];
+  for (let key in checkboxes) {
+    if (checkboxes[key].checked == true) {
+      chk.push(checkboxes[key].value);
+    }
+  }
+  console.log(chk)
+  document.querySelector("#showData").innerHTML += `
+    <tr class="text-center rounded-3">
+      <th>${FirstName.value}</th>
+      <td>${LastName.value}</td>
+      <td>${EmailAddress.value}</td>
+      <td>${MobileNumber.value}</td>
+      <td>${Qualification.value}</td>
+      <td>${Gender.value}</td>
+      <td>${chk.toString()}</td>
+      <td>${CommentBox.value}</td>
+    </tr>
+  `;
+  form.reset();
+};
